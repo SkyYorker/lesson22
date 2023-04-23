@@ -4,6 +4,8 @@
 # - move
 # - stop
 
+from abc import ABC, abstractmethod
+
 # Унаследуйте от него три класса Boat, Car, Electroscooter
 # для каждого из требуемых методов через print укажите какое-либо действие.
 # К примеру start_engine -> print('Двигатель катера запущен')
@@ -37,11 +39,75 @@
 
 # экземпляр класса Person должен поочередно взаимодействовать с объектами Car, Boat, Electroscooter
 
-# код должен выполняться не выбрасывая исключений
+# код должен выполняться не выбрасывая исключен
+class Transport(ABC):
 
-# TODO напишите Ваш код здесь
+
+    @abstractmethod
+    def start_engine():
+        pass
+
+    @abstractmethod
+    def stop_engine():
+        pass
+
+    @abstractmethod
+    def move():
+        pass
+
+    @abstractmethod
+    def stop():
+        pass
 
 
+class Boat(Transport):
+    def start_engine(self):
+        print('Двигатель лодки запущен')
+
+    def stop_engine(self):
+        print('Двигатель лодки остановлен')
+
+    def move(self):
+        print('Лодка плывёт')
+
+    def stop(self):
+        print('Лодка остановилась')
+
+class Car(Transport):
+    def start_engine(self):
+        print('Двигатель машины запущен')
+
+    def stop_engine(self):
+        print('Двигатель машины остановлен')
+
+    def move(self):
+        print('машины едет')
+
+    def stop(self):
+        print('машины остановилась')
+
+
+class Electroscooter(Transport):
+    def start_engine(self):
+        print('Двигатель скутер запущен')
+
+    def stop_engine(self):
+        print('Двигатель скутер остановлен')
+
+    def move(self):
+        print('скутер едет')
+
+    def stop(self):
+        print('скутер остановился')
+
+        
+class Person():
+
+    def use_transport(self, transport: Transport):
+        transport.start_engine()
+        transport.stop_engine()
+        transport.move()
+        transport.stop()
 # Отрезок кода для самопроверки.
 # Запустите его, после того как выполните задание
 if __name__ == '__main__':
